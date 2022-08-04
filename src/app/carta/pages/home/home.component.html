@@ -1,5 +1,5 @@
 <main>
-    <section class="py-5 text-center container">
+    <section class="pt-5 pb-3 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <img src="https://spoonacular.com/application/frontend/images/logo-simple-framed-green-gradient.svg"
@@ -10,18 +10,23 @@
             </div>
         </div>
     </section>
+    <div *ngIf="platosGuardados.length > 0">
+        <div class="album py-5 bg-success bg-gradient">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                    <div class="col" *ngFor="let plato of platosGuardados">    
 
-    <div class="album py-5 bg-success bg-gradient">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-                <app-plato></app-plato>
-                <app-plato></app-plato>
-                <app-plato></app-plato>
-                <app-plato></app-plato> 
+                        <app-plato [plato]="plato" ></app-plato>
+
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 </main>
+
+
 
 <app-footer></app-footer>
 

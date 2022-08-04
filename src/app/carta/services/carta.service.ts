@@ -2,19 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Platos } from '../interfaces/plato.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartaService {
 
-  private baseUrl: string = environment.baseUrl;
-  private apiKey: string = environment.apiKey;
+  private _baseUrl: string = environment.baseUrl;
+  private _apiKey: string = environment.apiKey;
+  private _platosGuardados: any[] = [];
+
+  get platosGuardados():any[] {
+    return [ ...this._platosGuardados ]
+  }
 
   constructor(private http: HttpClient) { }
 
-  getPlatos( termino: string ): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/?query=${termino}&${this.apiKey}`)
+  getPlatos( termino: string ): Observable<Platos> {
+    return this.http.get<Platos>(`${this._baseUrl}/?query=${termino}&apiKey=${this._apiKey}&addRecipeInformation=true`)
+  }
+
+  agregarPlatos( plato: any ) {
+    this._platosGuardados.push(plato)
   }
 
 }

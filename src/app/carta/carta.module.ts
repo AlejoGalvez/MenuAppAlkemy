@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BuscarComponent } from './pages/buscar/buscar.component';
 import { DetallesComponent } from './pages/detalles/detalles.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   imports: [
     CommonModule,
-    CartaRoutingModule
+    CartaRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class CartaModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Platos } from '../../interfaces/plato.interface';
+import { CartaService } from '../../services/carta.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  
+
+  get platosGuardados(): any[] {
+    return this.cartaService.platosGuardados;
+  }
+  
+  
+  
+
+  constructor( private cartaService:CartaService) { }
 
   ngOnInit(): void {
+    console.log(this.platosGuardados);
+    
+    console.log(this.platosGuardados.length > 0);
   }
+
+  
 
 }
