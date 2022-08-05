@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { GuardsGuard } from './guards/guards.guard';
 
 const routes: Routes = [
   {
@@ -9,7 +10,9 @@ const routes: Routes = [
   },
   {
     path: 'carta',
-    loadChildren: () => import('./carta/carta.module').then(m => m.CartaModule)
+    loadChildren: () => import('./carta/carta.module').then(m => m.CartaModule),
+    canLoad: [ GuardsGuard],
+    canActivate: [ GuardsGuard ]
   },
   {
     path: '**',

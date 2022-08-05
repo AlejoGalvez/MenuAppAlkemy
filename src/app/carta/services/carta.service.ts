@@ -27,4 +27,13 @@ export class CartaService {
     this._platosGuardados.push(plato)
   }
 
+  borrarPlatos( plato: Platos ) {
+    
+    const platoABorrar = (element:Platos) => element == plato;
+
+    // console.log(this._platosGuardados.findIndex(platoABorrar));
+
+    this._platosGuardados.splice(this._platosGuardados.findIndex(platoABorrar), 1);
+  }
+
 }

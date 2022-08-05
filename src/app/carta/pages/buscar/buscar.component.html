@@ -1,41 +1,44 @@
-<main>
-    <section class="pt-5 pb-3 text-center container">
-        <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <img src="https://spoonacular.com/application/frontend/images/logo-simple-framed-green-gradient.svg"
-                 class="mb-4"
-                 width="72"
-                 height="57">
-                <h1>Buscar Platos</h1>
-                <div class="input-group mt-3">
-                    <input type="text" 
-                           class="form-control" 
-                           [formControl]="termino"
-                           (keyup.enter)="buscar()"
-                           placeholder="Ingrese un plato a buscar...">
-                    <button class="btn btn-outline-success"
-                            (click)="buscar()" 
-                            type="button">Buscar</button>
+    <app-navbar></app-navbar>
+    
+    <main>
+        
+        <section class="pt-5 pb-3 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <img src="https://spoonacular.com/application/frontend/images/logo-simple-framed-green-gradient.svg"
+                     class="mb-4"
+                     width="72"
+                     height="57">
+                    <h1>Buscar Platos</h1>
+                    <div class="input-group mt-3">
+                        <input type="text" 
+                               class="form-control" 
+                               [formControl]="termino"
+                               (input)="teclaPresionada()"
+                               (keyup.enter)="buscar()"
+                               placeholder="Ingrese un plato a buscar...">
+                        <button class="btn btn-outline-success"
+                                (click)="buscar()" 
+                                type="button">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <div *ngIf="busqueda">
+        <div class="album py-5">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                    <div class="col" *ngFor="let plato of busqueda.results ; let i = index">         
+                    <app-plato [plato]="plato" [i]="i" (boton)="agregar($event)" ></app-plato>
                 </div>
             </div>
         </div>
-    </section>
-<div *ngIf="busqueda">
-    <div class="album py-5 bg-success bg-gradient">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-                <div class="col" *ngFor="let plato of busqueda.results ; let i = index">         
-                <app-plato [plato]="plato" [i]="i" (boton)="agregar($event)" ></app-plato>
-            </div>
-        </div>
     </div>
-</div>
-
-</div>
-
-
-</main>
-
-<a routerLink="../">asd</a>
-
-<app-footer></app-footer>
+    
+    </div>
+    
+       
+    
+    </main>
+    
+    <app-footer></app-footer>

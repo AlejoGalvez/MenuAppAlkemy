@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Platos } from '../../interfaces/plato.interface';
 import { CartaService } from '../../services/carta.service';
+import { Subject, debounceTime } from 'rxjs';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -17,9 +18,20 @@ export class BuscarComponent implements OnInit {
   busqueda!: Platos;
   numberVegan:number = 0;
   numberNoVegan: number = 0;
+
+  debouncer: Subject<string> = new Subject();
+
+
   constructor(private cartaService: CartaService) { }
 
   ngOnInit(): void {
+    this.debouncer
+    .pipe(debounceTime(300))
+    .subscribe( () => this.buscar());
+  }
+
+  teclaPresionada(){
+    this.debouncer.next(this.termino.value!);
   }
 
 
@@ -33,7 +45,6 @@ export class BuscarComponent implements OnInit {
     this.cartaService.getPlatos(this.termino.value!)
       .subscribe( platos => {
         this.busqueda = platos;
-        this.termino.reset();
       })
   }
 

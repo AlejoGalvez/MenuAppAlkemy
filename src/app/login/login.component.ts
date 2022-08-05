@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.clicked= true;
     this.loginService.logear(this.miFormulario.controls['email'].value,this.miFormulario.controls['password'].value)
       .subscribe( info => {
-        localStorage.setItem('token', info.token);
+        localStorage.setItem('token', info.token!);
         this.clicked= false;
         this.router.navigate(['./carta']);
       }, err => {

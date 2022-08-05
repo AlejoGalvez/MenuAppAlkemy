@@ -4,9 +4,11 @@ import { CartaRoutingModule } from './carta-routing.module';
 import { PlatoComponent } from './components/plato/plato.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BuscarComponent } from './pages/buscar/buscar.component';
-import { DetallesComponent } from './pages/detalles/detalles.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
 
 
 
@@ -15,13 +17,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     PlatoComponent,
     HomeComponent,
     BuscarComponent,
-    DetallesComponent,
-    FooterComponent
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
     CartaRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ]
 })
 export class CartaModule { }

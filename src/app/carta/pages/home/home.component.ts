@@ -16,8 +16,29 @@ export class HomeComponent implements OnInit {
     return this.cartaService.platosGuardados;
   }
   
+  get totalPlatos(): number {
+    let total:number = 0;
+    for(let precio of this.platosGuardados){
+      total += precio.pricePerServing
+    }
+    return total
+  }
   
-  
+  get promedioTiempo():number {
+    const sum = this.platosGuardados.reduce((sum, plato) => {
+      return sum + plato.readyInMinutes;
+    }, 0);
+    let platos = this.platosGuardados.length
+    return (platos > 0 ? sum / platos : platos);
+  }
+
+  get promedioScore():number {
+    const sum = this.platosGuardados.reduce((sum, plato) => {
+      return sum + plato.healthScore;
+    }, 0);
+    let platos = this.platosGuardados.length
+    return (platos > 0 ? sum / platos : platos);
+  }
 
   constructor( private cartaService:CartaService) { }
 
@@ -26,6 +47,11 @@ export class HomeComponent implements OnInit {
     
     console.log(this.platosGuardados.length > 0);
   }
+
+  borrar( plato:Platos ){
+    this.cartaService.borrarPlatos(plato);
+  }
+
 
   
 

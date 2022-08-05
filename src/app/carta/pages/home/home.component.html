@@ -1,6 +1,11 @@
+<app-navbar></app-navbar>
+
+
 <main>
+    
     <section class="pt-5 pb-3 text-center container">
         <div class="row py-lg-5">
+            <div class="col-lg-3"></div>
             <div class="col-lg-6 col-md-8 mx-auto">
                 <img src="https://spoonacular.com/application/frontend/images/logo-simple-framed-green-gradient.svg"
                  class="mb-4"
@@ -8,15 +13,25 @@
                  height="57">
                 <h1>Menu de platos</h1>
             </div>
+            <div class="col-lg-3 col-md-4">
+                <div *ngIf="platosGuardados.length > 0" class="mt-5">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-success"> Total: {{ totalPlatos | currency }} </li>
+                        <li class="list-group-item list-group-item-success"> Promedio de preparacion: {{ promedioTiempo }} </li>
+                        <li class="list-group-item list-group-item-success"> Promedio Health Score: {{ promedioScore }} </li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        
     </section>
     <div *ngIf="platosGuardados.length > 0">
-        <div class="album py-5 bg-success bg-gradient">
+        <div class="album py-5 bg-light bg-gradient">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                     <div class="col" *ngFor="let plato of platosGuardados">    
 
-                        <app-plato [plato]="plato" ></app-plato>
+                        <app-plato [plato]="plato" (boton)="borrar($event)" ></app-plato>
 
                     </div>
                 </div>

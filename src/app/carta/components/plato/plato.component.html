@@ -2,25 +2,19 @@
     <img [src]=plato.image class="card-img-top">
     <div class="card-body">
         <h5 class="card-title">{{ plato.title }}</h5>
-        <p class="card-text">
-            Cuisines: {{ plato.cuisines }}
-            <br>
-            Dish-Types: {{ plato.dishTypes }}
-            <br>
-            Precio por porcion: {{ plato.pricePerServing | currency }}
-        </p>
         <div>
-            <button type="button" class="btn btn-sm btn-outline-primary">
+            <button mat-button (click)="openDialog()" type="button" class="btn btn-sm btn-outline-primary">
                 Ver detalles
             </button>
-            <button type="button" class="btn btn-sm float-end" [id]="i" (click)="event()"
+            <button type="button" class="btn btn-sm float-end" (click)="event()"
                 [ngClass]="buscar ? 'btn-outline-success' : 'btn-outline-danger'">
                 {{ (buscar)? 'Agregar': 'Borrar' }}
             </button>
+            
+
         </div>
     </div>
 </div>
         
 
-    
     
