@@ -10,6 +10,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: '',
+    redirectTo: 'login'
+  },
+  {
     path: '404',
     component: ErrorComponent
   },
