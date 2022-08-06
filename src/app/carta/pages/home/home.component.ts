@@ -43,9 +43,6 @@ export class HomeComponent implements OnInit {
   constructor( private cartaService:CartaService) { }
 
   ngOnInit(): void {
-    console.log(this.platosGuardados);
-    
-    console.log(this.platosGuardados.length > 0);
   }
 
   borrar( plato:Platos ){

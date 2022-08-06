@@ -16,8 +16,14 @@ export class BuscarComponent implements OnInit {
   termino = new FormControl('', [Validators.minLength(2)]);
 
   busqueda!: Platos;
-  numberVegan:number = 0;
-  numberNoVegan: number = 0;
+  
+
+  get numberVegan() :number  {
+     return this.cartaService.numberVegan
+  } 
+  get numberNoVegan() :number  {
+    return this.cartaService.numberNoVegan
+ } 
 
   debouncer: Subject<string> = new Subject();
 
@@ -50,10 +56,10 @@ export class BuscarComponent implements OnInit {
 
   agregar( plato:any ){
     if(plato.vegan && this.numberVegan < 2){
-      this.numberVegan ++;
+      this.cartaService.sumar('vegan');
       this.cartaService.agregarPlatos(plato);
     } else if(!plato.vegan && this.numberNoVegan < 2){
-        this.numberNoVegan ++;
+      this.cartaService.sumar('noVegan');
         this.cartaService.agregarPlatos(plato);
     } else {
      Swal.fire({

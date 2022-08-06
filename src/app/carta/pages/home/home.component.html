@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 
-<main>
+<main class="animate__animated animate__fadeIn animate__faster">
     
     <section class="pt-5 pb-3 text-center container">
         <div class="row py-lg-5">
@@ -25,8 +25,8 @@
         </div>
         
     </section>
-    <div *ngIf="platosGuardados.length > 0">
-        <div class="album py-5 bg-light bg-gradient">
+    <ng-container *ngIf="platosGuardados.length > 0 ; else vacio">
+        <div class="album py-5">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                     <div class="col" *ngFor="let plato of platosGuardados">    
@@ -37,12 +37,20 @@
                 </div>
             </div>
         </div>
+        
 
-    </div>
+    </ng-container>
+    <ng-template #vacio class="row">
+        <div class="col text-center">
+            <h3 class="text-muted">El menu de platos se encuentra vacio</h3> 
+            <br>
+            <h5 class="text-muted">Puede agregar nuevos desde la seccion buscar</h5>   
+        </div>
+    </ng-template>
 </main>
 
 
 
-<app-footer></app-footer>
+<app-footer class="animate__animated animate__fadeIn animate__faster"></app-footer>
 
 

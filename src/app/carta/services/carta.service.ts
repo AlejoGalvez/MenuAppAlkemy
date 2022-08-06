@@ -12,9 +12,19 @@ export class CartaService {
   private _baseUrl: string = environment.baseUrl;
   private _apiKey: string = environment.apiKey;
   private _platosGuardados: any[] = [];
+  private _numberVegan:number = 0;
+  private _numberNoVegan: number = 0;
 
   get platosGuardados():any[] {
     return [ ...this._platosGuardados ]
+  }
+
+  get numberVegan():number {
+    return this._numberVegan
+  }
+
+  get numberNoVegan():number {
+    return  this._numberNoVegan 
   }
 
   constructor(private http: HttpClient) { }
@@ -27,13 +37,21 @@ export class CartaService {
     this._platosGuardados.push(plato)
   }
 
-  borrarPlatos( plato: Platos ) {
+  sumar( termino:string ) {
+    if(termino == 'vegan'){
+      this._numberVegan ++;
+    } else this._numberNoVegan ++;
+  }
+
+  borrarPlatos( plato: any ) {
     
+    (plato.vegan == true) ? this._numberVegan -- : this._numberNoVegan -- ;
+
     const platoABorrar = (element:Platos) => element == plato;
 
-    // console.log(this._platosGuardados.findIndex(platoABorrar));
-
     this._platosGuardados.splice(this._platosGuardados.findIndex(platoABorrar), 1);
+
+
   }
 
 }

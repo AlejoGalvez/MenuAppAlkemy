@@ -35,6 +35,15 @@ export class LoginComponent implements OnInit {
     this.clicked= true;
     this.loginService.logear(this.miFormulario.controls['email'].value,this.miFormulario.controls['password'].value)
       .subscribe( info => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Login exitoso',
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+        })
         localStorage.setItem('token', info.token!);
         this.clicked= false;
         this.router.navigate(['./carta']);
