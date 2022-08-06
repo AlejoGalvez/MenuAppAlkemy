@@ -28,8 +28,8 @@
         <div class="album py-5">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-                    <div class="col" *ngFor="let plato of busqueda.results ; let i = index">         
-                    <app-plato [plato]="plato" [i]="i" (boton)="agregar($event)" ></app-plato>
+                    <div class="col" *ngFor="let plato of busqueda.results">         
+                    <app-plato [plato]="plato" (boton)="agregar($event)" ></app-plato>
                 </div>
             </div>
         </div>

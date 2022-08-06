@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: 'https://api.spoonacular.com/recipes/complexSearch',
-  apiKey: '4e8892c5851c45c89abbf430a4bbee39'
+  apiKey: '038bead17e2e4c2ab01bfcd424153ad2'
 };
 
 /*

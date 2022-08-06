@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-
+<div class="d-flex flex-column">
 <main class="animate__animated animate__fadeIn animate__faster">
     
     <section class="pt-5 pb-3 text-center container">
@@ -11,14 +11,14 @@
                  class="mb-4"
                  width="72"
                  height="57">
-                <h1>Menu de platos</h1>
+                <h1>Menú de platos</h1>
             </div>
             <div class="col-lg-3 col-md-4">
                 <div *ngIf="platosGuardados.length > 0" class="mt-5">
                     <ul class="list-group">
                         <li class="list-group-item list-group-item-success"> Total: {{ totalPlatos | currency }} </li>
-                        <li class="list-group-item list-group-item-success"> Promedio de preparacion: {{ promedioTiempo }} </li>
-                        <li class="list-group-item list-group-item-success"> Promedio Health Score: {{ promedioScore }} </li>
+                        <li class="list-group-item list-group-item-success"> Promedio de preparación: {{ promedioTiempo | number: '1.1-2'}} </li>
+                        <li class="list-group-item list-group-item-success"> Promedio Health Score: {{ promedioScore | number: '1.1-2' }} </li>
                     </ul>
                 </div>
             </div>
@@ -42,15 +42,17 @@
     </ng-container>
     <ng-template #vacio class="row">
         <div class="col text-center">
-            <h3 class="text-muted">El menu de platos se encuentra vacio</h3> 
+            <h3 class="text-muted">El menú de platos se encuentra vacío</h3> 
             <br>
-            <h5 class="text-muted">Puede agregar nuevos desde la seccion buscar</h5>   
+            <h5 class="text-muted">Puede agregar platos nuevos desde la sección buscar</h5>   
         </div>
     </ng-template>
 </main>
 
 
 
+
 <app-footer class="animate__animated animate__fadeIn animate__faster"></app-footer>
+</div>
 
 

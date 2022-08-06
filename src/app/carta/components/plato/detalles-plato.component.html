@@ -1,4 +1,14 @@
-<h1 mat-dialog-title>Detalles del plato</h1>
+<div class="row" mat-dialog-title>
+  <div class="col-11">
+    <h1>Detalles del plato</h1>
+
+  </div>
+  <div class="col-1 px-1">
+
+    <button class="btn btn-sm btn-dark" (click)="closeDialog()">X</button>
+  </div>
+
+</div>
 <div mat-dialog-content>
   <ul>
     <li>
@@ -8,11 +18,13 @@
         <span>Precio: $ {{ data.pricePerServing }}</span>
       </li>
       <li>
-        <span>Tiempo de preparacion: {{ data.readyInMinutes }} min </span>
+        <span>Tiempo de preparación: {{ data.readyInMinutes }} min </span>
       </li>
       <li>
         <span>HealthScore: {{ data.healthScore }}</span>
       </li>
-    
+      <li>
+        <span>¿Es vegano?: {{ vegan }}</span>
+      </li>
   </ul>
 </div>

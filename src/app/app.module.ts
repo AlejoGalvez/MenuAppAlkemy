@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorComponent } from './login/error/error.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

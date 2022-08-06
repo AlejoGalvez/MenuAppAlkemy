@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   miFormulario: FormGroup = this.fb.group({
-    email: [ , [ Validators.required, Validators.minLength(1) ] ],
+    email: [ , [ Validators.required, Validators.minLength(1), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$") ] ],
     password: [ , [Validators.required, Validators.minLength(1) ]]
   })
 
@@ -29,21 +29,16 @@ export class LoginComponent implements OnInit {
   logear() {
 
     if(this.miFormulario.invalid){
-      //mostrar mensaje de campos vacios
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Datos incorrectos',
+        footer: 'Revise que haya ingresado los datos correctamente'})
       return;
     }
     this.clicked= true;
     this.loginService.logear(this.miFormulario.controls['email'].value,this.miFormulario.controls['password'].value)
       .subscribe( info => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Login exitoso',
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-        })
         localStorage.setItem('token', info.token!);
         this.clicked= false;
         this.router.navigate(['./carta']);
@@ -52,7 +47,7 @@ export class LoginComponent implements OnInit {
           icon: 'error',
           title: 'Oops...',
           text: 'Datos incorrectos',
-          footer: 'Email o contraseña invalidos'})
+          footer: 'Email o contraseña inválidos'})
         this.clicked= false;
     })
   }

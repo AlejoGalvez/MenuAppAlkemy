@@ -2,11 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { GuardsGuard } from './guards/guards.guard';
+import { ErrorComponent } from './login/error/error.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: '404',
+    component: ErrorComponent
   },
   {
     path: 'carta',
@@ -16,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'login'
+    redirectTo: '404'
   }
 ];
 

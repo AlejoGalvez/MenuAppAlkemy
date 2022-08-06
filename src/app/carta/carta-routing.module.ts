@@ -8,8 +8,7 @@ const routes: Routes = [
     path: '',
     children: [
       {path:'', component: HomeComponent},
-      {path:'buscar', component: BuscarComponent},
-      {path:'**', redirectTo:''}
+      {path:'buscar', component: BuscarComponent}
     ]
   }
 ];

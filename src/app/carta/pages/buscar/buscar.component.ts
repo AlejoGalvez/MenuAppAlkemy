@@ -33,7 +33,9 @@ export class BuscarComponent implements OnInit {
   ngOnInit(): void {
     this.debouncer
     .pipe(debounceTime(300))
-    .subscribe( () => this.buscar());
+    .subscribe( () => {
+      this.buscar()
+    });
   }
 
   teclaPresionada(){
@@ -43,8 +45,7 @@ export class BuscarComponent implements OnInit {
 
   buscar() {
 
-    if(this.termino.invalid){
-      console.log('invalido');
+    if(this.termino.invalid || this.termino.value == ''){
       return
     }
 
@@ -65,7 +66,7 @@ export class BuscarComponent implements OnInit {
      Swal.fire({
       icon: 'error',
       title: 'Error',
-      text: 'Maximo 2 platos de cada tipo',
+      text: 'No se pueden agregar mas de dos platos '+(plato.vegan?'veganos':'no veganos'), 
       footer: 'Seleccione un plato de otra categoria'
     })
   }
